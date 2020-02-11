@@ -71,7 +71,7 @@ void
 TcpPrrRecovery::EnterRecovery (Ptr<TcpSocketState> tcb, uint32_t dupAckCount,
                                uint32_t unAckDataCount, uint32_t deliveredBytes)
 {
-  NS_LOG_FUNCTION (this << tcb << dupAckCount << unAckDataCount);
+  //NS_LOG_FUNCTION (this << tcb << dupAckCount << unAckDataCount);
   NS_UNUSED (dupAckCount);
 
   m_prrOut = 0;
@@ -84,7 +84,7 @@ TcpPrrRecovery::EnterRecovery (Ptr<TcpSocketState> tcb, uint32_t dupAckCount,
 void
 TcpPrrRecovery::DoRecovery (Ptr<TcpSocketState> tcb, uint32_t deliveredBytes)
 {
-  NS_LOG_FUNCTION (this << tcb << deliveredBytes);
+  //NS_LOG_FUNCTION (this << tcb << deliveredBytes);
   m_prrDelivered += deliveredBytes;
 
   int sendCount;
@@ -115,7 +115,7 @@ TcpPrrRecovery::DoRecovery (Ptr<TcpSocketState> tcb, uint32_t deliveredBytes)
 void
 TcpPrrRecovery::ExitRecovery (Ptr<TcpSocketState> tcb)
 {
-  NS_LOG_FUNCTION (this << tcb);
+  //NS_LOG_FUNCTION (this << tcb);
   tcb->m_cWnd = tcb->m_ssThresh.Get ();
   tcb->m_cWndInfl = tcb->m_cWnd;
 }
