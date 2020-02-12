@@ -53,7 +53,7 @@ for (int iterator=1;iterator<=100;iterator++)
     {
       Config::SetDefault ("ns3::PrrRecovery::ReductionBound", StringValue (reductionBound));
     }
-  Config::SetDefault ("ns3::TcpL4Protocol::SocketType", TypeIdValue (TypeId::LookupByName ("ns3::TcpBic")));
+  Config::SetDefault ("ns3::TcpL4Protocol::SocketType", TypeIdValue (TypeId::LookupByName ("ns3::TcpNewReno")));
   Config::SetDefault ("ns3::TcpSocket::SegmentSize", UintegerValue (1000));
   Config::SetDefault ("ns3::TcpSocket::DelAckTimeout", TimeValue(Seconds (0.2)));
   Config::SetDefault ("ns3::TcpSocket::InitialCwnd", UintegerValue(10));

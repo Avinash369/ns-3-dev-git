@@ -67,6 +67,8 @@ TcpRateHalvingRecovery::EnterRecovery (Ptr<TcpSocketState> tcb, uint32_t dupAckC
   NS_UNUSED (dupAckCount);
   NS_UNUSED (unAckDataCount);
 
+  m_isAlternateAck = false;
+
   if(tcb->m_bytesInFlight < tcb->m_ssThresh){
      tcb->m_cWnd = tcb->m_ssThresh;
      tcb->m_cWndInfl = tcb->m_ssThresh + (dupAckCount * tcb->m_segmentSize);
@@ -74,9 +76,11 @@ TcpRateHalvingRecovery::EnterRecovery (Ptr<TcpSocketState> tcb, uint32_t dupAckC
 
   else
      DoRecovery (tcb, deliveredBytes);
+  //tcb->m_cWnd = tcb->m_ssThresh;
+  //tcb->m_cWndInfl = tcb->m_ssThresh + (dupAckCount * tcb->m_segmentSize);
 
-  m_isAlternateAck = false;
-    
+  
+  //DoRecovery (tcb, deliveredBytes);
 }
 
 void
@@ -101,7 +105,8 @@ TcpRateHalvingRecovery::DoRecovery (Ptr<TcpSocketState> tcb, uint32_t deliveredB
 
   else
     {
-      tcb->m_cWnd = tcb->m_ssThresh;    //Setting cwnd to ssThresh
+      //tcb->m_cWnd = tcb->m_ssThresh;    //Setting cwnd to ssThresh
+      sendCount = 1 * tcb->m_segmentSize;
     }
   tcb->m_cWnd = tcb->m_bytesInFlight + sendCount;       //Updating cwnd with the sent byte
   tcb->m_cWndInfl = tcb->m_cWnd;        //Inflating the cwnd

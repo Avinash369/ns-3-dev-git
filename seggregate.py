@@ -1,6 +1,6 @@
 import csv
 
-with open('PrrSSRBResult') as csv_file:
+with open('RateHalvingResult') as csv_file:
     csv_reader = csv.reader(csv_file, delimiter='\t')
     line_count = 0
     csv_data = [row for row in csv_reader]
@@ -17,7 +17,7 @@ with open('PrrSSRBResult') as csv_file:
         else:
             csv2_data.append(data)
 
-file1 = "PrrSSRB_B<=S.csv"
+file1 = "RH_B<=S.csv"
   
 
 with open(file1, 'w') as csvfile: 
@@ -27,7 +27,7 @@ with open(file1, 'w') as csvfile:
     csvwriter.writerows(csv1_data)
 
 
-file2 = "PrrSSRB_B>S.csv"
+file2 = "RH_B>S.csv"
   
 
 with open(file2,'w') as csvfile: 
